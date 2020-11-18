@@ -1,10 +1,9 @@
+const tasks = require("../models/tasks");
+
 module.exports = app => {
     app.get("/taskd", (req, res) => {
-        res.json({
-            task: [
-                { title: "Realizar Compras" },
-                { title: "Consetar o PC!"},
-            ]
+        Tasks.findAll({}, (tasks) => {
+            res.json({ tasks: tasks });
         });
     });
 };
